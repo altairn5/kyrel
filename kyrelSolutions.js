@@ -22,15 +22,15 @@ var row, colors, kyrel, return_value, rando;
 moveLeft();
 useGreen();
 useBlue();
-onBlue();
-onGreen();
 draw();
 erase();*/
 
-// day 3.1
-var initial_state = [ '', '', 'b', '', '' ];
+// day 3.2
+var initial_state = [ 'b', 'b', 'b', 'b', 'b' ];
 
 function main(n) {
+  n = 5;
+
   //////////////////////////////////
   ////                          ////
   //// v YOUR CODE BELOW HERE v ////
