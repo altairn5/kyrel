@@ -28,28 +28,34 @@ draw();
 erase();*/
 
 // day 3.1
-var initial_state = [ '', '', 'b', '', '' ];
+var initial_state = [ 'b', '', 'b', '', '' ];
 
 function main(n) {
-  //////////////////////////////////
-  ////                          ////
-  //// v YOUR CODE BELOW HERE v ////
-  ////                          ////
-  //////////////////////////////////
  
- for(var i = 1; i <= 5; i++){
+ for(var i = 0; i < 5; i++){
+
+  console.log("we are on turn", i, "are we on blue?", onBlue(), "maybe green?", onGreen())
+
+  if(onBlue()){
+      erase();
+      useGreen();
+      draw(); 
+      moveRight();
+
+    } 
+   else if(onGreen())
+   {
+      erase();
+      useBlue();
+      draw();
+      moveRight();
+   }
+   else{
+    moveRight();
+   }
   
-  if( i === n){
-  erase();
- }
-moveRight();
 }
 
-  //////////////////////////////////
-  ////                          ////
-  //// ^ YOUR CODE ABOVE HERE ^ ////
-  ////                          ////
-  //////////////////////////////////
 
 } // END MAIN
 
