@@ -28,7 +28,7 @@ draw();
 erase();*/
 
 // day 3.1
-var initial_state = [ 'b', '', 'b', '', '' ];
+var initial_state = [ 'g', '', 'b', '', '' ];
 
 function main(n) {
  
@@ -40,7 +40,7 @@ function main(n) {
       erase();
       useGreen();
       draw(); 
-      moveRight();
+      move("r",3);
 
     } 
    else if(onGreen())
@@ -48,10 +48,10 @@ function main(n) {
       erase();
       useBlue();
       draw();
-      moveRight();
+      move("r",4);
    }
    else{
-    moveRight();
+    move("r",1);
    }
   
 }
@@ -120,22 +120,29 @@ function currentSquare() {
   return $("tr").find("td").eq(kyrel.x);
 }
 
-function moveLeft() {
+function moveLeft(n) {
   $(".instructions").append("<div>moveLeft</div>");
   if(kyrel.x > 0) {
-    kyrel.x = kyrel.x - 1;
+    kyrel.x = kyrel.x - n;
     updateRow();
   }
+
 }
 
-function moveRight() {
+function moveRight(n) {
   $(".instructions").append("<div>moveRight</div>");
-  if(kyrel.x < row.x - 1) {
-    kyrel.x = kyrel.x + 1;
+  if(kyrel.x < row.x - n) {
+    kyrel.x = kyrel.x + n;
     updateRow();
   }
 }
-
+function move(x,y) {
+   if(x==="r"){
+    moveRight(y);
+   }else if(x==="l"){
+    moveLeft(y);
+   }
+  }
 function draw() {
   $(".instructions").append("<div>draw</div>");
   currentSquare().html('<div class="dot"></div>')
@@ -166,6 +173,12 @@ function onBlue() {
 function onGreen() {
   return currentSquare().find(".dot.dot-green").length > 0;
 }
+function  isEmpty(){
+  if((kyrel.color !== colors.green) || (kyrel.color !== colors.blue)){
+    return true;
+  }
+}
+
 
 $(document).ready(function() {
   rando = parseInt(Math.random()*10)
